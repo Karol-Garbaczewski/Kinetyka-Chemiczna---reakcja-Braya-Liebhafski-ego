@@ -5,20 +5,27 @@ from scipy.integrate import solve_ivp
 
 # NIE WIEM CZY PARAMETRY R SĄ ODPOWANIE
 def bray_liebhafsky_model(t, y, R1, R2, R3, R4, R5, R6, R7):
-    """Model równań różniczkowych reakcji cos tam jodu
+    """Model różniczkowy reakcji Braya-Liebhafsky'ego
     :param t: czas ustawiany przez solver
     :param y: wartości początkowe a później wektory stanu
-     U0: wartość początkowa Kwasu jodowego III HIO2
-     V0: wart. począt. Anionu jodkowego
-     Z0: wart. począt. Jodu cząsteczkowego
-     W0: wart. począt. tlenu cząsteczkowego 02
-    :param R1: szybkość tworzenia HIO₂ z IO₃⁻ i I⁻
-    :param R2: to szybkość zużycia HIO₂ przez reakcję z I⁻
-    :param R3: tempo autokatalitycznego tworzenia HIO₂
-    :param R4: tempo rozpadu HIO₂
-    :param R5: tempo powstawania I⁻ z I₂
-    :param R6: tempo usuwania tlenu (O₂)
-    :param R7: bla bla bla
+     U0: stężenie początkowe Kwasu jodowego III HIO₂
+     V0: st. począt. Anionu jodkowego I⁻
+     Z0: st. począt. Jodu cząsteczkowego I₂
+     W0: st. począt. tlenu cząsteczkowego 0₂
+    :param R1:= k₁ah²T
+    :param R2:= k₂hMT (=1)
+    :param R3:= k₃p³T
+    :param R4:= k₄TM
+    :param R5:= k₅cT (=1)
+    :param R6:= k₆T
+    :param R7:= k₇T
+     a: stężenie IO₃⁻ (stała)
+     c: stężenie H₂O (stała)
+     h: stężenie H⁺ (stała)
+     p: stężenie HIO (stała)
+     T:= 1/k₅c
+     M:= 1/k₂hT
+     kᵢ: stałe szybkości reakcji, i={1,2,3,4,5,6,7} 
     """
     U, V, Z, W = y  # rozpakowujemy listę
 
